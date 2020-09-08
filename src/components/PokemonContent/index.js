@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 
-import { Container, PokemonCard } from "./styles";
+import {
+  Container,
+  PokemonCard,
+  ButtonsContainer,
+  PrevButton,
+  NextButton,
+} from "./styles";
 
 const PokemonContent = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -19,6 +25,17 @@ const PokemonContent = () => {
     getPokemonData();
   }, []);
 
+  async function refreshPokemon(url) {
+    if (url) {
+      fetch(`${url}`).then(async (res) => {
+        const response = await res.json();
+        setPokemons(response.results);
+        setNextPage(response.next);
+        setPrevPage(response.previous);
+      });
+    }
+  }
+
   return (
     <Container>
       {pokemons &&
@@ -27,6 +44,10 @@ const PokemonContent = () => {
             <strong>{pokemon.name}</strong>
           </PokemonCard>
         ))}
+      <ButtonsContainer>
+        <PrevButton onClick={() => refreshPokemon(prevPage)}>P</PrevButton>
+        <NextButton onClick={() => refreshPokemon(nextPage)}>N</NextButton>
+      </ButtonsContainer>
     </Container>
   );
 };

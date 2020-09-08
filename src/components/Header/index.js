@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Container>
       <Title>
-        <h1>Teste Pokemóns</h1>
+        <h1>Teste Pokemón</h1>
       </Title>
     </Container>
   );

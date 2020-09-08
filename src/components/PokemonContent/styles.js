@@ -19,3 +19,24 @@ export const PokemonCard = styled.div`
     color: var(--blue);
   }
 `;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  color: var(--yellow);
+`;
+
+export const PrevButton = styled.button`
+  width: 24px;
+  height: 24px;
+  background: var(--blue);
+  cursor: pointer;
+`;
+
+export const NextButton = styled.button`
+  width: 24px;
+  height: 24px;
+  background: var(--blue);
+  margin-left: 8px;
+  cursor: pointer;
+`;
